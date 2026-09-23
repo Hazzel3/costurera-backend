@@ -1,0 +1,25 @@
+require('dotenv').config()
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+
+const app = express()
+app.use(cors())
+app.use(express.json())
+app.use('/api/materiales', require('./routes/materiales'))
+app.use('/api/auth', require('./routes/auth'))
+app.use('/api/clientes', require('./routes/clientes'))
+app.use('/api/medidas', require('./routes/medidas'))
+app.use('/api/prendas', require('./routes/prendas'))
+app.use('/api/presupuestos', require('./routes/presupuestos'))
+app.use('/api/tipos-medida', require('./routes/tiposMedida'))
+app.use('/api/usuarios', require('./routes/usuarios'))
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('MongoDB conectado')
+    app.listen(process.env.PORT || 5000, () =>
+      console.log(`Servidor en http://localhost:${process.env.PORT || 5000}`)
+    )
+  })
+  .catch(err => console.error('Error de conexión:', err))
