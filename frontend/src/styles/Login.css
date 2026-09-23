@@ -1,0 +1,178 @@
+/* ============================================
+   LOGIN
+   ============================================
+
+   ★ COMO MOVER LAS COSAS ★
+   Cada elemento tiene dos valores para moverlo:
+
+     top:  baja el elemento   (mas grande = mas abajo)
+     left: mueve a la derecha (mas grande = mas a la derecha)
+
+   Ejemplo: top: 100px; left: 50px;  ->  lo baja 100 y lo mueve 50 a la derecha
+
+   Eso es todo! No necesitas tocar nada mas para mover cosas.
+   ============================================ */
+
+
+/* fondo de toda la pantalla */
+.login-fondo {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;      /* centra la caja en la pantalla */
+  justify-content: center;
+}
+
+
+/* -- LA CAJA (el lienzo donde se colocan las cosas) -- */
+.login-caja {
+  position: relative;       /* esto hace que la caja sea el "lienzo" - no lo borres */
+
+  width: 400px;             /* ANCHO de la caja */
+  height: 550px;            /* ALTO de la caja */
+
+  background-image: url(/login.png);  /* imagen DENTRO de la caja */
+  background-size: cover;             /* cover = llena la caja | contain = imagen completa */
+  background-position: center;
+
+  border-radius: var(--radio-grande);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* -- TITULO "Bienvenida" -- */
+.login-titulo {
+  position: absolute;
+  top: 40px;                /* arriba/abajo */
+  left: 40px;               /* izquierda/derecha */
+
+  font-size: 1.5rem;        /* tamano del texto */
+  font-weight: 600;         /* grosor (400 normal, 700 negrita) */
+  color: #333;              /* color del texto */
+}
+
+
+/* -- SUBTITULO -- */
+.login-subtitulo {
+  position: absolute;
+  top: 80px;                /* arriba/abajo */
+  left: 40px;               /* izquierda/derecha */
+
+  font-size: 0.875rem;
+  color: #620dc4a9;
+}
+
+
+/* -- GRUPO DEL CORREO (etiqueta + campo) -- */
+.login-grupo-correo {
+  position: absolute;
+  top: 256px;               /* arriba/abajo */
+  left: 70px;               /* izquierda/derecha */
+  border-radius: 40px;      /* redondeo de los bordes */
+  background-color: rgba(245, 194, 194, 0.637);
+  width: 300px;             /* ancho del campo */
+ 
+
+}
+
+
+/* -- GRUPO DE LA CONTRASENA (etiqueta + campo) -- */
+.login-grupo-password {
+  position: absolute;
+  top: 332px;               /* arriba/abajo */
+  left: 70px;               /* izquierda/derecha */
+  background-color: rgba(245, 194, 194, 0.637);;
+  width: 300px;             /* ancho del campo */
+  border-radius: 40px;      /* redondeo de los bordes */
+}
+
+
+/* -- BOTON "Entrar" -- */
+.login-boton {
+  position: absolute;
+  top: 440px;               /* arriba/abajo */
+  left: 40px;               /* izquierda/derecha */
+  
+  width: 320px;             /* ancho del boton */
+  background-color: #f1a3a3;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: var(--radio-pequeno);
+  padding: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--fuente);
+  transition: background-color 0.2s;
+}
+
+.login-boton:hover {
+  background-color: #c96565e0;
+}
+
+
+/* -- MENSAJE DE ERROR -- */
+/* -- MENSAJE DE ERROR -- */
+.login-error {
+  position: static;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgba(220, 38, 38, 0.12);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #9f1239;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  margin: 0.8rem 0 1rem 0;
+  backdrop-filter: blur(4px);
+}
+
+
+/* ============================================
+   ESTILO DE LOS CAMPOS Y ETIQUETAS
+   (esto es solo la apariencia, no la posicion)
+   ============================================ */
+
+.login-label {
+  display: block;
+  font-size: 0.875rem;
+  color: #b96666;
+  margin-bottom: 0.25rem;
+}
+
+.login-input {
+  width: 100%;
+  border: none;
+  border-radius: var(--radio-pequeno); /* redondeo de los bordes */
+  height: 39px;
+  font-size: 0.875rem;
+  font-family: var(--fuente);            
+  outline: none;
+  background-color: transparent;   /* transparente para que se vea la imagen */
+  box-sizing: border-box;          /* padding no haga mas grande el input */
+  padding-left: 10px;              /* espacio entre el borde y el texto */
+
+}
+
+/* texto de placeholder */
+.login-input::placeholder {
+    color: #c48181c5;
+    font-style: italic;                  /* Hace la letra cursiva */
+    font-family: 'Georgia', serif;       /* Tipografía elegante estilo editorial */
+    font-size: 0.958rem;
+    opacity: 0.95;
+   
+}
+/* escritura de usuario */
+.login-input {
+    font-style: italic;
+    font-family: 'Georgia', serif;
+}
+
+.login-input:focus {
+  border-color: #d65a5a;
+  
+}
+

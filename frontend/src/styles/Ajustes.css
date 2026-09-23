@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/*  ============================================
+
+   AJUSTES (menu con Prendas y Materiales)
+
+   ============================================
+
+
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================  */
+
+.ajustes-pagina {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  
+  /* Tarjeta Glassmorphism */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* -- TÍTULO "Ajustes" (Idéntico a Clientes) -- */
+.ajustes-titulo {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54; /* Mismo tono borgoña/rosa oscuro de "Clientes" */
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Línea decorativa */
+.ajustes-titulo::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #d88a9a, #ebd0d3);
+  margin: 0.6rem auto 0;
+  border-radius: 10px;
+}
+
+/* Fila con los botones */
+.ajustes-botones {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* -- BOTOES DE AJUSTES -- */
+.ajustes-boton {
+  position: relative;
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  border: none;
+  border-radius: 14px;
+  padding: 1.1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 6px 18px rgba(179, 95, 114, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.ajustes-boton:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+  box-shadow: 0 10px 22px rgba(179, 95, 114, 0.4);
+}
+
+.ajustes-boton:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 10px rgba(179, 95, 114, 0.3);
+}
+
+.ajustes-boton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transition: 0.5s;
+}
+
+.ajustes-boton:hover::before {
+  left: 100%;
+}

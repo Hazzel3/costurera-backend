@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+   NAVBAR (barra de arriba)
+   ============================================
+
+   ★ COMO MOVER ★
+   Cada bloque tiene:
+     top:  arriba/abajo   (mas grande = mas abajo)
+     left: izquierda/derecha (mas grande = mas a la derecha)
+   ============================================ */
+
+.navbar {
+  background-color: rgba(238, 182, 182, 0.88); /* Color rosa original */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 18px rgba(180, 120, 130, 0.12);
+  
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+/* -- ENLACES DEL LADO IZQUIERDO -- */
+.navbar-enlaces {
+  position: relative;
+  top: 0px;                       /* arriba/abajo */
+  left: 0px;                      /* izquierda/derecha */
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.navbar-enlace {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+
+.navbar-enlace:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.navbar-enlace.active {
+  background: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* -- USUARIO Y BOTÓN SALIR (Lado derecho) -- */
+.navbar-usuario {
+  position: relative;
+  top: 0px;                       /* arriba/abajo */
+  left: 0px;                      /* izquierda/derecha */
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Cápsula Administrador */
+.navbar-nombre {
+  background: #ffffff;
+  color: #5c3d46;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.35rem 1.05rem;
+  border-radius: 50px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Punto verde */
+.navbar-nombre::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #6fc295;
+  border-radius: 50%;
+}
+
+.navbar-nombre:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Botón Salir */
+.navbar-salir {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  padding: 0.35rem 0.9rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.navbar-salir:hover {
+  background: #ffffff;
+  color: #b35f72;
+  border-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-salir:active {
+  transform: scale(0.96);
+}

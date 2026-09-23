@@ -1,0 +1,215 @@
+/* ============================================
+
+   MEDIDAS
+
+   ============================================
+
+
+
+   ★ COMO MOVER ★
+
+   Los bloques principales tienen:
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+.medidas-pagina {
+  max-width: 650px;                     /* Ancho de la página */
+  margin: 2rem auto;                    /* Centrado con margen vertical */
+  padding: 2.5rem;
+  
+  /* Tarjeta tipo cristal (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(180, 120, 130, 0.15);
+}
+
+/* -- BOTÓN VOLVER -- */
+.medidas-volver {
+  position: relative;
+  background: none;
+  border: none;
+  color: #7a5c65;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--fuente, sans-serif);
+  margin-bottom: 1.2rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.medidas-volver:hover {
+  color: #b35f72;
+  transform: translateX(-3px);          /* Desplazamiento suave a la izquierda */
+}
+
+/* -- TÍTULO Y SUBTÍTULO -- */
+.medidas-titulo {
+  position: relative;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #3d2c33;                       /* Tono oscuro elegante */
+  margin-bottom: 0.3rem;
+}
+
+.medidas-subtitulo {
+  font-size: 0.875rem;
+  color: #7a5c65;
+  margin-bottom: 1.8rem;
+  line-height: 1.4;
+}
+
+/* ---- CAMPOS DE ENTRADA Y FORMULARIOS ---- */
+
+.medidas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;       /* 2 columnas */
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.medidas-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b5259;
+  margin-bottom: 0.35rem;
+}
+
+.medidas-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.medidas-input,
+.medidas-textarea {
+  width: 100%;
+  border: 1px solid #e2cad0;
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.875rem;
+  font-family: var(--fuente, sans-serif);
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #3d2c33;
+  transition: all 0.2s ease;
+}
+
+.medidas-input:focus,
+.medidas-textarea:focus {
+  border-color: #c9788a;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.2);
+}
+
+.medidas-suffix {
+  position: absolute;
+  right: 0.85rem;
+  font-size: 0.875rem;
+  color: #8c7178;
+  pointer-events: none;
+}
+
+.medidas-notas-grupo {
+  margin-bottom: 1.25rem;
+}
+
+.medidas-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* -- BOTONES ("+ AGREGAR" Y "GUARDAR") -- */
+.medidas-boton {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #e5a4b1 0%, #c9788a 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--fuente, sans-serif);
+  box-shadow: 0 4px 14px rgba(201, 120, 138, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  white-space: nowrap;
+}
+
+.medidas-boton:hover {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(201, 120, 138, 0.45);
+}
+
+.medidas-boton:active {
+  transform: scale(0.97);
+}
+
+/* ---- LISTA DE TARJETAS DE MEDIDAS (Vista de la imagen) ---- */
+
+.medidas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* Tarjeta individual de cada medida (ej. Largo de Brazo) */
+.medida-tarjeta,
+.medidas-item {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.medida-tarjeta:hover,
+.medidas-item:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(201, 120, 138, 0.15);
+}
+
+.medida-nombre,
+.medidas-item-nombre {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3d2c33;
+}
+
+/* Botón Eliminar */
+.medida-boton-eliminar,
+.medidas-boton-eliminar {
+  background: none;
+  border: none;
+  color: #e57373;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--fuente, sans-serif);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.medida-boton-eliminar:hover,
+.medidas-boton-eliminar:hover {
+  color: #c62828;
+  text-decoration: underline;
+}

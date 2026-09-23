@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+   INICIO DEL CLIENTE - Panel Cristal
+   ============================================
+
+   ★ CÓMO MOVER ★
+   Cada bloque tiene:
+     top:  arriba/abajo   (más grande = más abajo)
+     left: izquierda/derecha (más grande = más a la derecha)
+   ============================================ */
+
+/* Contenedor Principal en Cristal */
+.inicio-pagina {
+  max-width: 750px;         /* Ancho del panel */
+  margin: 2.5rem auto;       /* Centrar en pantalla */
+  padding: 2.5rem;
+  text-align: center;
+  
+  /* Efecto Glassmorphism idéntico a las demás páginas */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* -- TÍTULO "Hola, ..." -- */
+.inicio-titulo {
+  position: relative;
+  top: 0px;                 /* arriba/abajo */
+  left: 0px;                /* izquierda/derecha */
+
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;           /* Tono borgoña/rosa oscuro */
+  margin-bottom: 0.5rem;
+}
+
+/* -- TEXTO DE BIENVENIDA -- */
+.inicio-texto {
+  position: relative;
+  top: 0px;                 /* arriba/abajo */
+  left: 0px;                /* izquierda/derecha */
+
+  font-size: 0.98rem;
+  color: #6b4d57;
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+/* ============================================
+   COMPONENTES INTERACTIVOS (NUEVOS)
+   ============================================ */
+
+/* Contenedor de Tarjetas de Estado/Resumen */
+.inicio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+/* Tarjeta Cristal Secundaria */
+.inicio-tarjeta {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(180, 120, 130, 0.06);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.inicio-tarjeta:hover {
+  transform: translateY(-3px);
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(180, 120, 130, 0.12);
+}
+
+.inicio-tarjeta-subtitulo {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #a3727e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+}
+
+.inicio-tarjeta-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3d2c33;
+  margin-bottom: 0.75rem;
+}
+
+/* Insignia / Estado del pedido */
+.inicio-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.inicio-badge.en-proceso {
+  background: rgba(238, 182, 182, 0.3);
+  color: #8c4a54;
+}
+
+.inicio-badge.completado {
+  background: rgba(111, 194, 149, 0.2);
+  color: #2e7d32;
+}
+
+/* Botón de Acción Principal para el Cliente */
+.inicio-boton {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(179, 95, 114, 0.25);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.inicio-boton:hover {
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+  transform: translateY(-1px);
+}

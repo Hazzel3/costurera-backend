@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   USUARIOS
+
+   ============================================
+
+
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+/* Contenedor Cristal Principal */
+.usuarios-pagina {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  
+  /* Efecto Glassmorphism */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* Botón Volver */
+.usuarios-volver {
+  background: none;
+  border: none;
+  color: #7a5c65;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1.25rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.usuarios-volver:hover {
+  color: #b35f72;
+  transform: translateX(-3px);
+}
+
+/* Encabezado */
+.usuarios-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+/* -- TÍTULO "Usuarios" (Estilo Clientes) -- */
+.usuarios-titulo {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54; /* Mismo tono borgoña/rosa oscuro de Clientes */
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Botón "+ Agregar usuario" */
+.usuarios-boton-nuevo {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(179, 95, 114, 0.25);
+  transition: all 0.2s ease;
+}
+
+.usuarios-boton-nuevo:hover {
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+  transform: translateY(-1px);
+}
+
+/* Tabla y Columnas */
+.usuarios-col-nombre   { width: 28%; }
+.usuarios-col-email    { width: 34%; }
+.usuarios-col-rol      { width: 25%; }
+.usuarios-col-acciones { width: 13%; text-align: right; }
+
+.usuarios-cabecera {
+  display: flex;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #72525c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(229, 164, 177, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+/* Formulario Cristalino */
+.usuarios-form {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.usuarios-form-titulo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  font-size: 1.1rem;
+}
+
+.usuarios-input {
+  width: 100%;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  background: #ffffff;
+  color: #3d2c33;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.usuarios-input:focus {
+  border-color: #c9788a;
+  box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+.usuarios-error {
+  color: #e57373;
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.usuarios-form-botones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.usuarios-boton-guardar {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.usuarios-boton-guardar:hover {
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+}
+
+.usuarios-boton-cancelar {
+  background: none;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  color: #7a5c65;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.usuarios-boton-cancelar:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #3d2c33;
+}
+
+/* Lista y Filas Flotantes */
+.usuarios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.usuarios-vacio {
+  text-align: center;
+  color: #8c7178;
+  padding: 2rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.usuario-fila {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.9rem;
+  color: #3d2c33;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.usuario-fila:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(180, 120, 130, 0.1);
+}
+
+.usuario-boton-eliminar {
+  background: none;
+  border: none;
+  color: #e57373;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.usuario-boton-eliminar:hover {
+  color: #c62828;
+  background-color: rgba(229, 115, 115, 0.1);
+}

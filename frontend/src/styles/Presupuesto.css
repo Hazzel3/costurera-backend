@@ -1,0 +1,190 @@
+/* ============================================
+   PRESUPUESTO (la calculadora)
+   ============================================
+
+   ★ COMO MOVER ★
+     top:  arriba/abajo   (mas grande = mas abajo)
+     left: izquierda/derecha (mas grande = mas a la derecha)
+   ============================================ */
+
+.pres-pagina {
+  max-width: 720px;         /* ancho de la pagina */
+  margin: 0 auto;           /* centrar */
+  padding: 1.5rem;
+}
+
+/* -- BOTON VOLVER -- */
+.pres-volver {
+  position: relative;
+  top: 0px;                 /* arriba/abajo */
+  left: 0px;                /* izquierda/derecha */
+
+  background: none;
+  border: none;
+  color: var(--color-texto-suave);
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-family: var(--fuente);
+  margin-bottom: 1rem;
+}
+
+.pres-volver:hover { color: var(--color-texto-normal); }
+
+/* -- TITULO -- */
+.pres-titulo {
+  position: relative;
+  top: 0px;                 /* arriba/abajo */
+  left: 0px;                /* izquierda/derecha */
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-texto-titulo);
+  margin-bottom: 1.5rem;
+}
+
+/* fila para elegir y agregar prenda */
+.pres-agregar {
+  display: flex;
+  gap: 0.5rem;             /* espacio entre el selector y el boton */
+  margin-bottom: 1.5rem;
+}
+
+.pres-select {
+  flex: 1;                  /* el selector ocupa el espacio sobrante */
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-pequeno);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  font-family: var(--fuente);
+  background-color: white;
+}
+
+.pres-boton-agregar {
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  border-radius: var(--radio-pequeno);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-family: var(--fuente);
+}
+
+.pres-boton-agregar:hover { background-color: var(--color-principal-oscuro); }
+
+.pres-vacio {
+  text-align: center;
+  color: var(--color-texto-muy-suave);
+  font-size: 0.875rem;
+  padding: 2rem 0;
+}
+
+/* ---- CADA PRENDA DEL PRESUPUESTO ---- */
+
+.pres-prenda {
+  background-color: var(--color-fondo-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-mediano);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.pres-prenda-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.pres-prenda-nombre {
+  font-weight: 600;
+  color: var(--color-texto-titulo);
+  margin-right: 0.75rem;
+}
+
+.pres-prenda-yardas {
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+}
+
+.pres-quitar {
+  background: none;
+  border: none;
+  color: #f87171;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: var(--fuente);
+}
+
+/* mini-tabla de materiales: estas columnas controlan el ancho */
+.pres-col-mat   { width: 40%; }
+.pres-col-cant  { width: 20%; text-align: center; }
+.pres-col-extra { width: 20%; text-align: center; }
+.pres-col-sub   { width: 20%; text-align: right; }
+
+.pres-mat-cabecera {
+  display: flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.pres-mat-fila {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0;
+  font-size: 0.875rem;
+  color: var(--color-texto-normal);
+}
+
+.pres-input-extra {
+  width: 70px;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-pequeno);
+  padding: 0.25rem 0.4rem;
+  font-size: 0.85rem;
+  font-family: var(--fuente);
+  text-align: center;
+}
+
+.pres-prenda-total {
+  text-align: right;
+  font-weight: 500;
+  color: var(--color-texto-titulo);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-borde);
+}
+
+/* ---- TOTAL FINAL Y GUARDAR ---- */
+
+.pres-final {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-borde);
+}
+
+.pres-total {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-principal);
+}
+
+.pres-boton-guardar {
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  border-radius: var(--radio-pequeno);
+  padding: 0.6rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--fuente);
+}
+
+.pres-boton-guardar:hover { background-color: var(--color-principal-oscuro); }

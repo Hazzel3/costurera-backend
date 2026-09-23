@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   PRESUPUESTOS (lista de guardados)
+
+   ============================================
+
+
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+/* Contenedor principal tipo cristal (Glassmorphism) */
+.presl-pagina {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* -- TÍTULO "Presupuestos" (Estilo Clientes) -- */
+.presl-titulo {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54; /* Mismo tono borgoña/rosa oscuro de Clientes */
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* -- CONTENEDOR DE LA LISTA -- */
+.presl-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Estado cuando no hay presupuestos */
+.presl-vacio {
+  text-align: center;
+  color: #8c7178;
+  font-size: 0.9rem;
+  padding: 2.5rem 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 14px;
+  border: 1px dashed rgba(229, 164, 177, 0.5);
+}
+
+/* -- TARJETA INDIVIDUAL DE PRESUPUESTO -- */
+.presl-tarjeta {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Efecto Hover en la tarjeta */
+.presl-tarjeta:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(201, 120, 138, 0.15);
+}
+
+/* Nombre del cliente en la tarjeta */
+.presl-nombre {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3d2c33;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+/* Detalles (Fecha, prendas, monto) */
+.presl-detalle {
+  font-size: 0.85rem;
+  color: #7a5c65;
+  font-weight: 400;
+}
+
+/* -- BOTONES DE ACCIÓN (Derecha) -- */
+.presl-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.875rem;
+}
+
+/* Botón "Ver / Editar" */
+.presl-boton-editar {
+  background: none;
+  border: none;
+  color: #b35f72;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.presl-boton-editar:hover {
+  color: #8e4a5d;
+  background-color: rgba(201, 120, 138, 0.1);
+  text-decoration: none;
+}
+
+/* Botón "Eliminar" */
+.presl-boton-eliminar {
+  background: none;
+  border: none;
+  color: #e57373;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.presl-boton-eliminar:hover {
+  color: #c62828;
+  background-color: rgba(229, 115, 115, 0.1);
+}

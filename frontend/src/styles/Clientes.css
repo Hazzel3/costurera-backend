@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+/* ============================================
+
+   ESTILOS GENERALES Y FONDO
+
+   ============================================ */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #3d2c33;
+    background: linear-gradient(rgba(245, 226, 228, 0.85), rgba(245, 226, 228, 0.85)), 
+                url('/foto.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Contenedor Cristal Principal */
+.clientes-pagina {
+    max-width: 750px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+    box-sizing: border-box;
+}
+
+/* Encabezado */
+.clientes-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.75rem;
+}
+
+.clientes-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    font-weight: 600;
+    font-style: italic;
+    color:  #8c4a54;
+    margin: 0;
+}
+
+/* Botón "+ Nuevo cliente" */
+.clientes-boton-nuevo {
+    background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 0.7rem 1.4rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(179, 95, 114, 0.25);
+    transition: all 0.2s ease;
+}
+
+.clientes-boton-nuevo:hover {
+    background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+    transform: translateY(-1px);
+}
+
+/* Buscador */
+.clientes-buscador {
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ebd8dc;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #3d2c33;
+    margin-bottom: 1.5rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.clientes-buscador::placeholder {
+    color: #8c7178;
+    font-style: italic;
+}
+
+.clientes-buscador:focus {
+    background: #ffffff;
+    border-color: #c9788a;
+    box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+/* Formulario */
+.clientes-form {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.clientes-form-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3d2c33;
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+}
+
+.clientes-input,
+.clientes-textarea,
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #ebd8dc;
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    color: #3d2c33;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.clientes-textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.clientes-input:focus,
+.clientes-textarea:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #c9788a;
+    box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+.clientes-form-botones {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.clientes-boton-guardar {
+    background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1.25rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clientes-boton-guardar:hover {
+    background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+}
+
+.clientes-boton-cancelar {
+    background: none;
+    border: 1px solid #ebd8dc;
+    border-radius: 10px;
+    color: #7a5c65;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.clientes-boton-cancelar:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #3d2c33;
+}
+
+/* Lista y Tarjetas de Clientes */
+.clientes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.clientes-vacio {
+    text-align: center;
+    color: #8c7178;
+    font-style: italic;
+    font-size: 0.9rem;
+    padding: 2.5rem 0;
+}
+
+/* Tarjeta individual flotante estilo cristal */
+.cliente-tarjeta {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+}
+
+.cliente-tarjeta:hover {
+    background: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(180, 120, 130, 0.1);
+}
+
+/* Información del cliente */
+.cliente-nombre {
+    font-family: 'Playfair Display', serif;
+    color: #3d2c33;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 2px 0;
+}
+
+.cliente-telefono {
+    font-family: 'Poppins', sans-serif;
+    color: #7a5c65;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Botones de acción */
+.cliente-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+    max-width: 320px;
+}
+
+.cliente-boton-medidas,
+.cliente-boton-editar,
+.cliente-boton-archivar,
+.cliente-boton-presupuesto {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    background: rgba(229, 164, 177, 0.25);
+    color: #8c4a54;
+    border: 1px solid rgba(201, 120, 138, 0.4);
+    padding: 5px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cliente-boton-listo {
+    background: #d88a9a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.cliente-boton-eliminar {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    background: rgba(229, 115, 115, 0.1);
+    color: #e57373;
+    border: 1px solid rgba(229, 115, 115, 0.3);
+    padding: 5px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Ordenamiento en Filas */
+.cliente-boton-medidas,
+.cliente-boton-editar,
+.cliente-boton-eliminar {
+    order: 1;
+}
+
+.cliente-boton-listo,
+.cliente-boton-presupuesto,
+.cliente-boton-archivar {
+    order: 2;
+}
+
+/* Hovers */
+.cliente-boton-medidas:hover,
+.cliente-boton-editar:hover,
+.cliente-boton-archivar:hover,
+.cliente-boton-presupuesto:hover {
+    background: #b35f72;
+    color: #ffffff;
+    border-color: #b35f72;
+}
+
+.cliente-boton-listo:hover {
+    background: #15803d;
+}
+
+.cliente-boton-eliminar:hover {
+    background: #c62828;
+    color: #ffffff;
+    border-color: #c62828;
+}
+
+/* Botón Guardar Medidas */
+.medidas-boton {
+    width: 100%;
+    background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(179, 95, 114, 0.25);
+    transition: all 0.2s ease;
+}
+
+.medidas-boton:hover {
+    background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+    transform: translateY(-1px);
+}

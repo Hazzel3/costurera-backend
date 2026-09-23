@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   PRENDAS
+
+   ============================================
+
+
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+.prendas-pagina {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  
+  /* Tarjeta tipo cristal (Glassmorphism) */
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* -- BOTÓN VOLVER -- */
+.prendas-volver {
+  position: relative;
+  background: none;
+  border: none;
+  color: #7a5c65;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1.2rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.prendas-volver:hover {
+  color: #b35f72;
+  transform: translateX(-3px);
+}
+
+/* Fila del título + botón */
+.prendas-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* -- TÍTULO "Prendas" (Estilo Clientes) -- */
+.prendas-titulo {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54; /* Mismo tono borgoña/rosa oscuro de Clientes */
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* -- BOTÓN "+ Nueva prenda" -- */
+.prendas-boton-nuevo {
+  position: relative;
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 12px rgba(179, 95, 114, 0.25);
+  transition: all 0.2s ease;
+}
+
+.prendas-boton-nuevo:hover {
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+  transform: translateY(-1px);
+}
+
+.prendas-boton-nuevo:active {
+  transform: scale(0.98);
+}
+
+/* ---- EDITOR / FORMULARIO DE PRENDA ---- */
+
+.prendas-form {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.prendas-form-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  margin-bottom: 1rem;
+}
+
+.prendas-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b5259;
+  margin: 0.85rem 0 0.3rem;
+}
+
+.prendas-input,
+.prendas-input-corto,
+.prendas-select,
+.prendas-factor,
+.prendas-modo {
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.875rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  background-color: #ffffff;
+  color: #3d2c33;
+  transition: all 0.2s ease;
+}
+
+.prendas-input { width: 100%; box-sizing: border-box; }
+.prendas-input-corto { width: 130px; }
+.prendas-factor { width: 80px; }
+.prendas-modo { width: 120px; }
+
+.prendas-input:focus,
+.prendas-input-corto:focus,
+.prendas-select:focus,
+.prendas-factor:focus,
+.prendas-modo:focus {
+  border-color: #c9788a;
+  box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+/* Cada sección dentro del editor */
+.prendas-seccion {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(229, 164, 177, 0.3);
+}
+
+.prendas-seccion-titulo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  margin-bottom: 0.4rem;
+}
+
+.prendas-ayuda {
+  font-size: 0.8rem;
+  color: #8c7178;
+  margin-bottom: 0.75rem;
+}
+
+/* Casillitas de las medidas */
+.prendas-medidas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.prendas-check {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: #4a383f;
+  background-color: #ffffff;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.prendas-check:hover {
+  border-color: #c9788a;
+  background-color: #fff9fa;
+}
+
+/* Fila de material */
+.prendas-material-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.prendas-select { flex: 1; }
+
+.prendas-quitar {
+  background: none;
+  border: none;
+  color: #e57373;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.prendas-quitar:hover {
+  color: #c62828;
+  background-color: #ffebee;
+}
+
+.prendas-boton-agregar-mat {
+  background: #ffffff;
+  border: 1px dashed #c9788a;
+  color: #b35f72;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.prendas-boton-agregar-mat:hover {
+  background-color: #fff0f3;
+  border-color: #b35f72;
+}
+
+/* Botones guardar / cancelar */
+.prendas-form-botones {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.prendas-boton-guardar {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.prendas-boton-guardar:hover {
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+}
+
+.prendas-boton-cancelar {
+  background: none;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  color: #7a5c65;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.prendas-boton-cancelar:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #3d2c33;
+}
+
+/* ---- LISTA DE TARJETAS DE PRENDAS ---- */
+
+.prendas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.prendas-vacio {
+  text-align: center;
+  color: #8c7178;
+  font-size: 0.9rem;
+  padding: 2.5rem 0;
+}
+
+/* Tarjeta individual (Blusa, Vestido, etc.) */
+.prenda-tarjeta {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 1rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.prenda-tarjeta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(180, 120, 130, 0.15);
+  background: #ffffff;
+}
+
+.prenda-nombre {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3d2c33;
+  margin-bottom: 3px;
+  letter-spacing: 0.5px;
+}
+
+.prenda-detalle {
+  font-size: 0.825rem;
+  color: #7a5c65;
+}
+
+.prenda-acciones {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.prenda-boton-editar {
+  background: none;
+  border: none;
+  color: #b35f72;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.prenda-boton-editar:hover {
+  color: #8e4a5d;
+  text-decoration: underline;
+}
+
+.prenda-boton-eliminar {
+  background: none;
+  border: none;
+  color: #e57373;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.prenda-boton-eliminar:hover {
+  color: #c62828;
+  text-decoration: underline;
+}

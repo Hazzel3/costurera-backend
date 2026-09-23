@@ -1,0 +1,53 @@
+/* ============================================
+   VARIABLES GLOBALES
+   Cambia los colores aqui y se aplican en toda la app
+   ============================================ */
+
+:root {
+  /* color principal - se usa en la barra, botones y bordes */
+  --color-principal: #9F1239;
+
+  /* color principal mas oscuro - al pasar el mouse por los botones */
+  --color-principal-oscuro: #881337;
+
+  /* color principal claro - textos sobre fondo de color */
+  --color-principal-claro: #fecdd3;
+
+  /* colores de texto */
+  --color-texto-titulo:     #111827;
+  --color-texto-normal:     #374151;
+  --color-texto-suave:      #6B7280;
+  --color-texto-muy-suave:  #9CA3AF;
+
+  /* colores de fondo */
+  --color-fondo-pagina:     #f9fafb;
+  --color-fondo-tarjeta:    #ffffff;
+  --color-fondo-formulario: #f3f4f6;
+
+  /* bordes */
+  --color-borde:            #e5e7eb;
+
+  /* errores */
+  --color-error:            #ef4444;
+
+  /* fuente general */
+  --fuente: 'Segoe UI', Arial, sans-serif;
+
+  /* bordes redondeados */
+  --radio-pequeno:  6px;
+  --radio-mediano:  10px;
+  --radio-grande:   16px;
+}
+
+/* reset basico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente);
+  background-color: var(--color-fondo-pagina);
+  color: var(--color-texto-normal);
+}
