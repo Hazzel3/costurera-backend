@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
 
           {/* ---- PAGINA DEL CLIENTE (vacia por ahora) ---- */}
-          <Route path="/inicio" element={
+          <Route path="/mi-cuenta" element={
             <RutaProtegida rol="cliente">
               <Layout><InicioCliente /></Layout>
             </RutaProtegida>

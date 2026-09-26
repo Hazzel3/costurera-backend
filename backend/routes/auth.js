@@ -10,11 +10,11 @@ router.post('/login', async (req, res) => {
     return res.status(401).json({ mensaje: 'Credenciales incorrectas' })
   }
   const token = jwt.sign(
-    { id: usuario._id, rol: usuario.rol },
+    { id: usuario._id, rol: usuario.rol, cliente: usuario.cliente },
     process.env.JWT_SECRET,
     { expiresIn: '7d' }
   )
-  res.json({ token, nombre: usuario.nombre, rol: usuario.rol })
+  res.json({ token, nombre: usuario.nombre, rol: usuario.rol, cliente: usuario.cliente })
 })
 
 module.exports = router

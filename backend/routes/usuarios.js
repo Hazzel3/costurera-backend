@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../models/User')
+const Cliente = require('../models/Cliente')
 const { auth, soloAdmin } = require('../middleware/auth')
 
 // todo lo de aqui es solo para administradores
@@ -14,18 +15,39 @@ router.get('/', async (req, res) => {
   res.json(usuarios)
 })
 
-// crear un usuario nuevo
+// la cuenta vinculada a un cliente (o null si no tiene)
+router.get('/cliente/:clienteId', async (req, res) => {
+  const usuario = await User.findOne({ cliente: req.params.clienteId }).select('-password')
+  res.json(usuario)
+})
+
+// crear un usuario nuevo (si no se manda rol, es una cuenta de cliente)
 router.post('/', async (req, res) => {
-  const { nombre, email, password, rol, cliente } = req.body
+  const { email, password, cliente } = req.body
+  const rol = req.body.rol || 'cliente'
+  let nombre = req.body.nombre
+
+  if (!email || !password) {
+    return res.status(400).json({ mensaje: 'Falta el correo o la contraseña' })
+  }
 
   const existe = await User.findOne({ email })
   if (existe) {
     return res.status(400).json({ mensaje: 'Ese correo ya está registrado' })
   }
 
-  const datos = { nombre, email, password, rol }
-  // solo los usuarios cliente llevan un cliente vinculado
-  if (rol === 'cliente' && cliente) datos.cliente = cliente
+  const datos = { email, password, rol }
+
+  // una cuenta de cliente siempre debe estar vinculada a un cliente, y solo una por cliente
+  if (rol === 'cliente') {
+    const c = await Cliente.findById(cliente)
+    if (!c) return res.status(400).json({ mensaje: 'Hay que elegir un cliente' })
+    const yaTiene = await User.findOne({ cliente })
+    if (yaTiene) return res.status(400).json({ mensaje: 'Ese cliente ya tiene una cuenta' })
+    datos.cliente = cliente
+    if (!nombre) nombre = c.nombre
+  }
+  datos.nombre = nombre
 
   const usuario = await User.create(datos)
   res.status(201).json({
@@ -34,6 +56,19 @@ router.post('/', async (req, res) => {
     email: usuario.email,
     rol: usuario.rol,
   })
+})
+
+// restablecer la contraseña de un usuario
+router.put('/:id/password', async (req, res) => {
+  const { password } = req.body
+  if (!password || password.length < 6) {
+    return res.status(400).json({ mensaje: 'La contraseña debe tener al menos 6 caracteres' })
+  }
+  const usuario = await User.findById(req.params.id)
+  if (!usuario) return res.status(404).json({ mensaje: 'Usuario no encontrado' })
+  usuario.password = password
+  await usuario.save()   // al guardar, el modelo la encripta solo
+  res.json({ mensaje: 'Contraseña actualizada' })
 })
 
 // eliminar un usuario

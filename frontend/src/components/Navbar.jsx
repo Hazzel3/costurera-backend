@@ -26,7 +26,7 @@ export default function Navbar() {
             <Link to="/contabilidad" className="navbar-enlace">Contabilidad</Link>
           </>
         ) : (
-          <Link to="/inicio" className="navbar-enlace">Mi cuenta</Link>
+          <Link to="/mi-cuenta" className="navbar-enlace">Mi cuenta</Link>
         )}
       </div>
 

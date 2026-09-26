@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Cliente = require('../models/Cliente')
+const User = require('../models/User')
 const { auth, soloAdmin } = require('../middleware/auth')
 
 router.use(auth, soloAdmin)
@@ -40,6 +41,7 @@ router.put('/:id/desarchivar', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   await Cliente.findByIdAndDelete(req.params.id)
+  await User.deleteMany({ cliente: req.params.id, rol: 'cliente' })   // tambien se borra su cuenta
   res.json({ mensaje: 'Cliente eliminado' })
 })
 

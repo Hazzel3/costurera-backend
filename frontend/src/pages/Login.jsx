@@ -18,7 +18,7 @@ export default function Login() {
       const { data } = await api.post('/auth/login', form)
       login(data)
       // el cliente va a su pagina; el admin va al inicio normal
-      navigate(data.rol === 'cliente' ? '/inicio' : '/')
+      navigate(data.rol === 'cliente' ? '/mi-cuenta' : '/')
     } catch {
       setError('Correo o contraseña incorrectos')
     }
