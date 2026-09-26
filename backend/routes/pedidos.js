@@ -5,6 +5,7 @@ const Cliente = require('../models/Cliente')
 const Transaccion = require('../models/Transaccion')
 const { auth, soloAdmin } = require('../middleware/auth')
 const { conPagos } = require('../utils/pagos')
+const { ESTADOS_CON_MATERIAL, descontarMateriales, devolverMateriales } = require('../utils/inventarioPedido')
 
 router.use(auth, soloAdmin)
 
@@ -69,18 +70,54 @@ router.post('/desde-presupuesto/:presupuestoId', async (req, res) => {
 
 // editar (tambien sirve para cambiar el estado)
 router.put('/:id', async (req, res) => {
+  const pedido = await Pedido.findById(req.params.id)
+  if (!pedido) return res.status(404).json({ mensaje: 'Pedido no encontrado' })
+
   const datos = { ...req.body }
+  delete datos.materialesDescontados   // esto solo lo maneja el sistema
   if (datos.cliente) {
     const cliente = await Cliente.findById(datos.cliente)
     if (!cliente) return res.status(400).json({ mensaje: 'Cliente no encontrado' })
     datos.clienteNombre = cliente.nombre
   }
-  const pedido = await Pedido.findByIdAndUpdate(req.params.id, datos, { new: true, runValidators: true })
-  res.json(pedido)
+
+  // inventario: al terminar se descuentan los materiales; si se regresa a pendiente/en proceso, se devuelven
+  let aviso = ''
+  if (datos.estado && datos.estado !== pedido.estado) {
+    const yaDescontado = pedido.materialesDescontados.length > 0
+    const usaMaterial = ESTADOS_CON_MATERIAL.includes(datos.estado)
+
+    if (usaMaterial && !yaDescontado) {
+      if (!pedido.presupuesto) {
+        aviso = 'Este pedido no viene de un presupuesto: descuenta los materiales a mano en Inventario.'
+      } else {
+        try {
+          const lista = await descontarMateriales(pedido)
+          aviso = lista.length > 0
+            ? 'Se descontó del inventario:\n' + lista.map(l => `${l.cantidad} ${l.material.medida || ''} de ${l.material.descripcion}`).join('\n')
+            : 'El presupuesto no tiene materiales del inventario para descontar.'
+        } catch (err) {
+          return res.status(err.status || 500).json({ mensaje: err.message })
+        }
+      }
+    }
+    if (!usaMaterial && yaDescontado) {
+      await devolverMateriales(pedido, `el pedido regresó a "${datos.estado}"`)
+      aviso = 'Los materiales se devolvieron al inventario.'
+    }
+  }
+
+  pedido.set(datos)
+  await pedido.save()
+  res.json({ ...pedido.toObject(), aviso })
 })
 
 // borrar
 router.delete('/:id', async (req, res) => {
+  const pedido = await Pedido.findById(req.params.id)
+  if (pedido && pedido.materialesDescontados.length > 0) {
+    await devolverMateriales(pedido, 'se eliminó el pedido')
+  }
   await Pedido.findByIdAndDelete(req.params.id)
   res.json({ mensaje: 'Pedido eliminado' })
 })

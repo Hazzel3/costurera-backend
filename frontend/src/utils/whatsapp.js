@@ -1,3 +1,6 @@
+// numero de WhatsApp de la costurera (para "Olvide mi contraseña"). Ej: '55551234'
+export const TELEFONO_COSTURERA = ''
+
 // mensaje que se envia cuando la prenda esta lista
 export const MENSAJE_LISTO = 'Hola {nombre}, tu prenda ya está lista para recoger. ¡Muchas gracias!'
 

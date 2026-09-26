@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 /* cada material calculado dentro de una prenda del presupuesto */
 const itemMaterialSchema = new mongoose.Schema({
+  material:       { type: mongoose.Schema.Types.ObjectId, ref: 'Material' },   // para descontarlo del inventario
   descripcion:    String,
   cantidad:       Number,   // cantidad calculada automaticamente
   extra:          Number,   // ajuste manual (+/-)

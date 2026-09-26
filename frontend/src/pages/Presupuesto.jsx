@@ -23,6 +23,7 @@ function calcularItem(prenda, medidas) {
       ? (Number(m.factor) || 0) * yardas
       : (Number(m.factor) || 0)
     return {
+      material: info._id,
       descripcion: info.descripcion || 'Material',
       cantidad: Math.round(cantidad * 100) / 100,
       extra: 0,

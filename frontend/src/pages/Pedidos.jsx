@@ -64,10 +64,15 @@ export default function Pedidos() {
   }
 
   async function cambiarEstado(p, estado) {
-    await api.put(`/pedidos/${p._id}`, { estado })
-    if (estado === 'terminado' && confirm('¿Avisar al cliente por WhatsApp?')) {
-      const cliente = clientes.find(c => c._id === p.cliente)
-      abrirWhatsApp(cliente?.telefono, p.clienteNombre)
+    try {
+      const { data } = await api.put(`/pedidos/${p._id}`, { estado })
+      if (data.aviso) alert(data.aviso)
+      if (estado === 'terminado' && confirm('¿Avisar al cliente por WhatsApp?')) {
+        const cliente = clientes.find(c => c._id === p.cliente)
+        abrirWhatsApp(cliente?.telefono, p.clienteNombre)
+      }
+    } catch (err) {
+      alert(err.response?.data?.mensaje || 'No se pudo cambiar el estado')
     }
     cargar()
   }

@@ -13,6 +13,11 @@ const pedidoSchema = new mongoose.Schema({
   total:         { type: Number, default: 0 },   // precio acordado con el cliente
   fechaEntrega:  Date,
   notas:         String,
+  // lo que se desconto del inventario al terminar el pedido (para poder devolverlo)
+  materialesDescontados: [{
+    material: { type: mongoose.Schema.Types.ObjectId, ref: 'Material' },
+    cantidad: Number,
+  }],
 }, { timestamps: true })
 
 module.exports = mongoose.model('Pedido', pedidoSchema)
