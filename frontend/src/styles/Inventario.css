@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   INVENTARIO
+
+   ============================================
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+/* -- COLORES --
+   Cambia estos colores y se aplican en toda la pagina de inventario */
+.inv-pagina {
+  --color-entrada: #16a34a;      /* verde */
+  --color-salida:  #dc2626;      /* rojo */
+  --color-ajuste:  #3b82f6;      /* azul */
+  --color-bajo:    #dc2626;      /* rojo de la etiqueta "Stock bajo" */
+  --color-bajo-fondo: #fee2e2;   /* rojo clarito */
+}
+
+/* Contenedor principal tipo cristal (un poco mas ancho porque es una tabla) */
+.inv-pagina {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* Titulo "Inventario" */
+.inv-titulo {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  margin: 0 0 1.25rem 0;
+}
+
+/* Aviso "X materiales estan en stock bajo" */
+.inv-aviso {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  background: var(--color-bajo-fondo);
+  color: var(--color-bajo);
+  border: 1px solid var(--color-bajo);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+/* -- COLUMNAS DE LA TABLA --
+   El numero de cada "flex" dice cuanto espacio ocupa la columna
+   (mas grande = mas ancha). */
+.inv-col-material { flex: 3; }
+.inv-col-unidad   { flex: 1.2; }
+.inv-col-stock    { flex: 1; text-align: right; }
+.inv-col-minimo   { flex: 1; text-align: right; }
+.inv-col-acciones {
+  flex: 4.5;
+  display: flex;
+  flex-wrap: wrap;             /* si los botones no caben, bajan */
+  gap: 0.35rem;
+  justify-content: flex-end;   /* botones pegados a la derecha */
+}
+
+/* Fila de titulos (Material, Unidad, Stock...) */
+.inv-cabecera {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 1.1rem 0.5rem 1.1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;   /* todo en mayusculas */
+  letter-spacing: 0.5px;
+  color: #8c7178;
+}
+
+/* -- LISTA (crece sola, no se mueve pieza por pieza) -- */
+.inv-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inv-vacio {
+  text-align: center;
+  color: #8c7178;
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 1.5rem 0;
+}
+
+/* Cada material (la fila + su formulario si esta abierto) */
+.inv-bloque {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.inv-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.1rem;
+  font-size: 0.9rem;
+  color: #3d2c33;
+}
+
+/* Etiqueta roja "Stock bajo" junto al nombre */
+.inv-etiqueta-bajo {
+  background: var(--color-bajo-fondo);
+  color: var(--color-bajo);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 20px;         /* forma de pastilla */
+  margin-left: 0.5rem;         /* separacion del nombre */
+  white-space: nowrap;
+}
+
+/* -- BOTONES DE CADA FILA -- */
+.inv-boton,
+.inv-boton-entrada,
+.inv-boton-salida {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* "Ajustar" e "Historial" */
+.inv-boton {
+  background: rgba(229, 164, 177, 0.25);
+  color: #8c4a54;
+  border: 1px solid rgba(201, 120, 138, 0.4);
+}
+
+.inv-boton:hover {
+  background: #b35f72;
+  color: #ffffff;
+}
+
+/* "+ Entrada" */
+.inv-boton-entrada {
+  background: var(--color-entrada);
+  color: #ffffff;
+  border: 1px solid var(--color-entrada);
+}
+
+/* "− Salida" */
+.inv-boton-salida {
+  background: #ffffff;
+  color: var(--color-salida);
+  border: 1px solid var(--color-salida);
+}
+
+.inv-boton-entrada:hover,
+.inv-boton-salida:hover {
+  filter: brightness(0.9);     /* se oscurece un poco */
+}
+
+/* -- FORMULARIOS (entrada, salida, ajuste) debajo de la fila -- */
+.inv-form,
+.inv-historial {
+  border-top: 1px dashed #ebd8dc;   /* rayita que lo separa de la fila */
+  padding: 1rem 1.1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.inv-form-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #3d2c33;
+}
+
+/* Texto encima de cada campo */
+.inv-etiqueta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #7a5c65;
+}
+
+.inv-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #3d2c33;
+  outline: none;
+}
+
+.inv-input:focus {
+  border-color: #c9788a;
+  box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+/* Casilla "Registrar como gasto" */
+.inv-casilla {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #3d2c33;
+  cursor: pointer;
+}
+
+.inv-form-botones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.inv-boton-guardar {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inv-boton-cancelar {
+  background: none;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  color: #7a5c65;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* -- HISTORIAL DE MOVIMIENTOS -- */
+.inv-movimiento {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f3e8ea;   /* rayita entre movimientos */
+}
+
+/* Etiqueta "Entrada" / "Salida" / "Ajuste" */
+.inv-mov-tipo {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 1px 8px;
+  border-radius: 20px;
+  min-width: 62px;             /* todas del mismo ancho */
+  text-align: center;
+}
+
+.inv-mov-entrada { background: var(--color-entrada); }
+.inv-mov-salida  { background: var(--color-salida); }
+.inv-mov-ajuste  { background: var(--color-ajuste); }
+
+.inv-mov-cantidad {
+  font-weight: 700;
+  color: #3d2c33;
+  min-width: 50px;
+}
+
+.inv-mov-detalle {
+  color: #7a5c65;
+}

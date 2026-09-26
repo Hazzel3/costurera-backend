@@ -14,6 +14,7 @@ app.use('/api/prendas', require('./routes/prendas'))
 app.use('/api/presupuestos', require('./routes/presupuestos'))
 app.use('/api/pedidos', require('./routes/pedidos'))
 app.use('/api/transacciones', require('./routes/transacciones'))
+app.use('/api/inventario', require('./routes/inventario'))
 app.use('/api/tipos-medida', require('./routes/tiposMedida'))
 app.use('/api/usuarios', require('./routes/usuarios'))
 

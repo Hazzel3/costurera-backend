@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
 
 // editar un material
 router.put('/:id', async (req, res) => {
+  delete req.body.stock   // el stock solo se cambia desde Inventario
   const material = await Material.findByIdAndUpdate(req.params.id, req.body, { new: true })
   res.json(material)
 })

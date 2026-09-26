@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import api from '../api'
 import '../styles/Materiales.css'
 
-const VACIO = { descripcion: '', medida: '', precioUnitario: '' }
+const VACIO = { descripcion: '', medida: '', precioUnitario: '', stockMinimo: '' }
 
 export default function Materiales() {
   const [materiales, setMateriales] = useState([])
@@ -37,6 +37,7 @@ export default function Materiales() {
       descripcion: material.descripcion,
       medida: material.medida || '',
       precioUnitario: material.precioUnitario ?? '',
+      stockMinimo: material.stockMinimo ?? '',
     })
     setEditando(material._id)
     setMostrarForm(true)
@@ -99,6 +100,15 @@ export default function Materiales() {
             placeholder="Precio unitario (ej: 10.50)"
             value={form.precioUnitario}
             onChange={e => setForm({ ...form, precioUnitario: e.target.value })}
+            className="materiales-input"
+          />
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            placeholder="Stock mínimo (avisa cuando quede esto o menos)"
+            value={form.stockMinimo}
+            onChange={e => setForm({ ...form, stockMinimo: e.target.value })}
             className="materiales-input"
           />
           <div className="materiales-form-botones">

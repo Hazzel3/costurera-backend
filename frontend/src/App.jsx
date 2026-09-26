@@ -13,6 +13,7 @@ import Presupuesto from './pages/Presupuesto'
 import Presupuestos from './pages/Presupuestos'
 import Pedidos from './pages/Pedidos'
 import Contabilidad from './pages/Contabilidad'
+import Inventario from './pages/Inventario'
 import TiposMedida from './pages/TiposMedida'
 import Usuarios from './pages/Usuarios'
 import InicioCliente from './pages/InicioCliente'
@@ -107,6 +108,11 @@ export default function App() {
           <Route path="/contabilidad" element={
             <RutaProtegida rol="admin">
               <Layout><Contabilidad /></Layout>
+            </RutaProtegida>
+          } />
+          <Route path="/inventario" element={
+            <RutaProtegida rol="admin">
+              <Layout><Inventario /></Layout>
             </RutaProtegida>
           } />
 
