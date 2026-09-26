@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
+import { abrirWhatsApp } from '../utils/whatsapp'
 import '../styles/Clientes.css'
-
-// abre WhatsApp con un mensaje ya escrito (avisar que la prenda esta lista)
-function abrirWhatsApp(cliente) {
-  const numero = (cliente.telefono || '').replace(/\D/g, '')
-  const conCodigo = numero.length === 8 ? '502' + numero : numero
-  const mensaje = `Hola ${cliente.nombre}, tu prenda ya esta lista para recoger. Muchas gracias!`
-  window.open(`https://wa.me/${conCodigo}?text=${encodeURIComponent(mensaje)}`, '_blank')
-}
 
 export default function Clientes() {
   const [clientes, setClientes] = useState([])
@@ -123,7 +116,7 @@ export default function Clientes() {
               {c.telefono && <p className="cliente-telefono">{c.telefono}</p>}
             </div>
             <div className="cliente-acciones">
-              <button onClick={() => abrirWhatsApp(c)} className="cliente-boton-listo">
+              <button onClick={() => abrirWhatsApp(c.telefono, c.nombre)} className="cliente-boton-listo">
                 Listo
               </button>
               {/* nuevo boton: ir a la calculadora de presupuesto de este cliente */}
