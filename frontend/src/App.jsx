@@ -16,7 +16,7 @@ import Contabilidad from './pages/Contabilidad'
 import Inventario from './pages/Inventario'
 import TiposMedida from './pages/TiposMedida'
 import Usuarios from './pages/Usuarios'
-import InicioCliente from './pages/InicioCliente'
+import MiCuenta from './pages/MiCuenta'
 
 
 function Layout({ children }) {
@@ -35,10 +35,10 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
 
-          {/* ---- PAGINA DEL CLIENTE (vacia por ahora) ---- */}
+          {/* ---- PAGINA DEL CLIENTE (portal "Mi cuenta") ---- */}
           <Route path="/mi-cuenta" element={
             <RutaProtegida rol="cliente">
-              <Layout><InicioCliente /></Layout>
+              <Layout><MiCuenta /></Layout>
             </RutaProtegida>
           } />
 

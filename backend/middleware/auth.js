@@ -20,4 +20,12 @@ function soloAdmin(req, res, next) {
   next()
 }
 
-module.exports = { auth, soloAdmin }
+// Solo para usuarios con rol cliente (el portal "Mi cuenta")
+function soloCliente(req, res, next) {
+  if (req.usuario.rol !== 'cliente') {
+    return res.status(403).json({ mensaje: 'Solo clientes' })
+  }
+  next()
+}
+
+module.exports = { auth, soloAdmin, soloCliente }

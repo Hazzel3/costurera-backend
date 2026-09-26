@@ -17,6 +17,7 @@ app.use('/api/transacciones', require('./routes/transacciones'))
 app.use('/api/inventario', require('./routes/inventario'))
 app.use('/api/tipos-medida', require('./routes/tiposMedida'))
 app.use('/api/usuarios', require('./routes/usuarios'))
+app.use('/api/mi', require('./routes/mi'))
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {

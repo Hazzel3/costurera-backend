@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   MI CUENTA (portal del cliente)
+
+   ============================================
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+/* -- COLORES DE CADA ESTADO DEL PEDIDO --
+   Cambia estos colores y se aplican en la etiqueta de estado.
+   "texto" es el color de las letras, "fondo" el color clarito de atras. */
+.micuenta-pagina {
+  --pendiente-texto:  #b45309;   /* naranja */
+  --pendiente-fondo:  #fef3c7;
+
+  --en_proceso-texto: #1d4ed8;   /* azul */
+  --en_proceso-fondo: #dbeafe;
+
+  --terminado-texto:  #15803d;   /* verde */
+  --terminado-fondo:  #dcfce7;
+
+  --entregado-texto:  #4b5563;   /* gris */
+  --entregado-fondo:  #f3f4f6;
+}
+
+/* Contenedor principal tipo cristal (igual que las demas paginas) */
+.micuenta-pagina {
+  max-width: 750px;
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* -- SALUDO "Hola, ..." -- */
+.micuenta-titulo {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  text-align: center;          /* left = a la izquierda | center = al centro */
+  margin-bottom: 1.5rem;
+}
+
+/* -- PESTAÑAS (Mis pedidos / Mis presupuestos / Mis medidas) -- */
+.micuenta-pestanas {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: flex;
+  flex-wrap: wrap;             /* si no caben, bajan a otra fila */
+  justify-content: center;     /* flex-start = a la izquierda | center = al centro */
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.micuenta-pestana {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  background: rgba(229, 164, 177, 0.25);
+  color: #8c4a54;
+  border: 1px solid rgba(201, 120, 138, 0.4);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;         /* forma de pastilla */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.micuenta-pestana:hover {
+  background: rgba(229, 164, 177, 0.45);
+}
+
+/* La pestaña que esta elegida */
+.micuenta-pestana-activa {
+  background: #b35f72;
+  color: #ffffff;
+  border-color: #b35f72;
+}
+
+/* -- LISTA (crece sola, no se mueve pieza por pieza) -- */
+.micuenta-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.micuenta-vacio {
+  text-align: center;
+  color: #8c7178;
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}
+
+/* Cada tarjeta (pedido, presupuesto o medidas) */
+.micuenta-tarjeta {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 15px rgba(180, 120, 130, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Las tarjetas de presupuesto se pueden tocar para abrirlas */
+.micuenta-tarjeta-clic {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.micuenta-tarjeta-clic:hover {
+  background: #ffffff;
+  transform: translateY(-2px);   /* se levanta un poquito */
+}
+
+.micuenta-tarjeta-titulo {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #3d2c33;
+}
+
+/* Textos pequeños (fecha, total, pagado...) */
+.micuenta-detalle {
+  font-size: 0.85rem;
+  color: #7a5c65;
+}
+
+/* "▼ ver materiales" */
+.micuenta-ver {
+  color: #b35f72;
+  font-weight: 500;
+}
+
+/* -- ETIQUETA DEL ESTADO DEL PEDIDO -- */
+.micuenta-estado {
+  width: fit-content;          /* solo tan ancha como el texto */
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.8rem;
+  border-radius: 20px;
+}
+
+.micuenta-estado-pendiente  { color: var(--pendiente-texto);  background: var(--pendiente-fondo); }
+.micuenta-estado-en_proceso { color: var(--en_proceso-texto); background: var(--en_proceso-fondo); }
+.micuenta-estado-terminado  { color: var(--terminado-texto);  background: var(--terminado-fondo); }
+.micuenta-estado-entregado  { color: var(--entregado-texto);  background: var(--entregado-fondo); }
+
+/* -- DETALLE DE UN PRESUPUESTO (al abrirlo) -- */
+.micuenta-prenda {
+  border-top: 1px dashed #ebd8dc;   /* rayita que separa cada prenda */
+  padding-top: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.micuenta-prenda-nombre {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #3d2c33;
+  margin-bottom: 0.25rem;
+}
+
+/* Cada material: nombre a la izquierda, precio a la derecha */
+.micuenta-material {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #7a5c65;
+}
+
+/* -- MEDIDAS: nombre a la izquierda, valor a la derecha -- */
+.micuenta-medida {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #3d2c33;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f3e8ea;   /* rayita entre medidas */
+}
+
+.micuenta-medida-valor {
+  font-weight: 600;
+  color: #8c4a54;
+}
