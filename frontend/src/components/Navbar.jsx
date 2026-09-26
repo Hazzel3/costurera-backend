@@ -22,6 +22,7 @@ export default function Navbar() {
             <Link to="/archivados" className="navbar-enlace">Archivados</Link>
             <Link to="/ajustes" className="navbar-enlace">Ajustes</Link>
             <Link to="/presupuestos" className="navbar-enlace">Presupuestos</Link>
+            <Link to="/contabilidad" className="navbar-enlace">Contabilidad</Link>
           </>
         ) : (
           <Link to="/inicio" className="navbar-enlace">Mi cuenta</Link>

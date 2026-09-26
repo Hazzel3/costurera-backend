@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import api from '../api'
 import { abrirWhatsApp } from '../utils/whatsapp'
+import { quetzales } from '../utils/dinero'
 import '../styles/Pedidos.css'
 
 const ESTADOS = [
@@ -68,6 +69,18 @@ export default function Pedidos() {
       const cliente = clientes.find(c => c._id === p.cliente)
       abrirWhatsApp(cliente?.telefono, p.clienteNombre)
     }
+    cargar()
+  }
+
+  async function registrarPago(p) {
+    const respuesta = prompt(`Monto del pago de ${p.clienteNombre} (saldo: ${quetzales(p.saldo)})`)
+    if (respuesta === null) return
+    const monto = Number(respuesta.replace(',', '.'))
+    if (!(monto > 0)) {
+      alert('Escribe un monto válido')
+      return
+    }
+    await api.post(`/pedidos/${p._id}/pagos`, { monto })
     cargar()
   }
 
@@ -171,7 +184,11 @@ export default function Pedidos() {
               <p className="pedido-cliente">{p.clienteNombre}</p>
               {p.descripcion && <p className="pedido-descripcion">{p.descripcion}</p>}
               <p className="pedido-detalle">
-                {p.fechaEntrega ? `Entrega: ${fecha(p.fechaEntrega)}` : 'Sin fecha de entrega'} · Q{Number(p.total).toFixed(2)}
+                {p.fechaEntrega ? `Entrega: ${fecha(p.fechaEntrega)}` : 'Sin fecha de entrega'} · Total {quetzales(p.total)}
+              </p>
+              <p className="pedido-pagos">
+                Pagado {quetzales(p.pagado)} · Saldo {quetzales(p.saldo)}
+                {p.saldo <= 0 && <span className="pedido-etiqueta-pagado">Pagado</span>}
               </p>
               {p.notas && <p className="pedido-notas">{p.notas}</p>}
             </div>
@@ -185,6 +202,9 @@ export default function Pedidos() {
                   <option key={e.valor} value={e.valor}>{e.texto}</option>
                 ))}
               </select>
+              {p.saldo > 0 && (
+                <button onClick={() => registrarPago(p)} className="pedido-boton-pago">Registrar pago</button>
+              )}
               <button onClick={() => iniciarEdicion(p)} className="pedido-boton-editar">Editar</button>
               <button onClick={() => eliminar(p._id)} className="pedido-boton-eliminar">Eliminar</button>
             </div>

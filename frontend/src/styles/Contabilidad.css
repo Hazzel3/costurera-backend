@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   CONTABILIDAD
+
+   ============================================
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+/* -- COLORES DE INGRESOS Y GASTOS --
+   Cambia estos colores y se aplican en las tarjetas, botones y montos */
+.conta-pagina {
+  --color-ingreso: #16a34a;          /* verde */
+  --color-ingreso-fondo: #dcfce7;    /* verde clarito */
+  --color-gasto: #dc2626;            /* rojo */
+  --color-gasto-fondo: #fee2e2;      /* rojo clarito */
+}
+
+/* Contenedor principal tipo cristal (igual que Clientes) */
+.conta-pagina {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* -- ENCABEZADO (titulo + selector de mes) -- */
+.conta-encabezado {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: flex;
+  justify-content: space-between;   /* titulo a la izquierda, mes a la derecha */
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Titulo "Contabilidad" */
+.conta-titulo {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  margin: 0;
+}
+
+/* Selector de mes */
+.conta-mes {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  background: #ffffff;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #3d2c33;
+  cursor: pointer;
+}
+
+/* -- LAS TRES TARJETAS DE RESUMEN -- */
+.conta-resumen {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));   /* 3 columnas; si no caben, bajan */
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cada tarjeta de resumen */
+.conta-tarjeta {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  border-top: 5px solid #b35f72;    /* raya de color arriba (cambia en cada tarjeta, ver abajo) */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+.conta-tarjeta-ingresos { border-top-color: var(--color-ingreso); }
+.conta-tarjeta-gastos   { border-top-color: var(--color-gasto); }
+.conta-tarjeta-balance  { border-top-color: var(--color-principal); }   /* color principal de variables.css */
+
+/* Texto "Ingresos", "Gastos", "Balance" */
+.conta-tarjeta-titulo {
+  font-size: 0.85rem;
+  color: #7a5c65;
+  margin-bottom: 0.3rem;
+}
+
+/* El monto grande */
+.conta-tarjeta-monto {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #3d2c33;
+}
+
+.conta-tarjeta-ingresos .conta-tarjeta-monto { color: var(--color-ingreso); }
+.conta-tarjeta-gastos   .conta-tarjeta-monto { color: var(--color-gasto); }
+.conta-tarjeta-balance  .conta-tarjeta-monto { color: var(--color-principal); }
+
+/* -- BOTONES "+ Ingreso" y "+ Gasto" -- */
+.conta-botones {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;   /* flex-start = a la izquierda | center = al centro */
+  margin-bottom: 1.25rem;
+}
+
+.conta-boton-ingreso,
+.conta-boton-gasto {
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.conta-boton-ingreso { background: var(--color-ingreso); }
+.conta-boton-gasto   { background: var(--color-gasto); }
+
+.conta-boton-ingreso:hover,
+.conta-boton-gasto:hover {
+  filter: brightness(0.9);       /* se oscurece un poco */
+  transform: translateY(-1px);   /* se levanta un poquito */
+}
+
+/* -- FORMULARIO NUEVO / EDITAR -- */
+.conta-form {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;   /* un campo debajo del otro */
+  gap: 0.85rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.conta-form-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3d2c33;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Texto encima de cada campo */
+.conta-etiqueta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #7a5c65;
+}
+
+.conta-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  color: #3d2c33;
+  outline: none;
+}
+
+.conta-input:focus {
+  border-color: #c9788a;
+  box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+.conta-form-botones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.conta-boton-guardar {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.conta-boton-cancelar {
+  background: none;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  color: #7a5c65;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+}
+
+/* -- LISTA DE MOVIMIENTOS (crece sola, no se mueve pieza por pieza) -- */
+.conta-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.conta-vacio {
+  text-align: center;
+  color: #8c7178;
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 2.5rem 0;
+}
+
+/* Cada movimiento */
+.conta-fila {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* La parte de texto ocupa todo el espacio que sobra */
+.conta-fila-info {
+  flex: 1;
+}
+
+.conta-fila-descripcion {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3d2c33;
+}
+
+.conta-fila-detalle {
+  font-size: 0.8rem;
+  color: #7a5c65;
+}
+
+/* El monto de cada movimiento */
+.conta-fila-monto {
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;   /* que el monto no se parta en dos lineas */
+}
+
+.conta-monto-ingreso { color: var(--color-ingreso); }
+.conta-monto-gasto   { color: var(--color-gasto); }
+
+.conta-fila-acciones {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* Boton "Editar" */
+.conta-boton-editar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: rgba(229, 164, 177, 0.25);
+  color: #8c4a54;
+  border: 1px solid rgba(201, 120, 138, 0.4);
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.conta-boton-editar:hover {
+  background: #b35f72;
+  color: #ffffff;
+}
+
+/* Boton "Eliminar" */
+.conta-boton-eliminar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: rgba(229, 115, 115, 0.1);
+  color: #e57373;
+  border: 1px solid rgba(229, 115, 115, 0.3);
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.conta-boton-eliminar:hover {
+  background: #c62828;
+  color: #ffffff;
+}

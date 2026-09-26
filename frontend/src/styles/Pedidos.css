@@ -338,3 +338,44 @@
   color: #ffffff;
   border-color: #c62828;
 }
+
+/* ============================================
+   PAGOS DEL PEDIDO (agregado en la fase 3)
+   ============================================ */
+
+/* Linea "Pagado Q... · Saldo Q..." */
+.pedido-pagos {
+  font-size: 0.85rem;
+  color: #7a5c65;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Etiqueta verde "Pagado" cuando ya no hay saldo */
+.pedido-etiqueta-pagado {
+  background: #dcfce7;       /* verde clarito */
+  color: #15803d;            /* verde */
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 20px;       /* forma de pastilla */
+}
+
+/* Boton "Registrar pago" */
+.pedido-boton-pago {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: #16a34a;       /* verde */
+  color: #ffffff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pedido-boton-pago:hover {
+  background: #15803d;       /* verde mas oscuro */
+}
