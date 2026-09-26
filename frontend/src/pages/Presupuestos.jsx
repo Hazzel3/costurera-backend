@@ -20,6 +20,12 @@ export default function Presupuestos() {
     cargar()
   }
 
+  async function convertirEnPedido(id) {
+    if (!confirm('¿Crear un pedido con este presupuesto?')) return
+    await api.post(`/pedidos/desde-presupuesto/${id}`)
+    navigate('/pedidos')
+  }
+
   function fecha(iso) {
     return new Date(iso).toLocaleDateString('es-GT', { day: '2-digit', month: '2-digit', year: 'numeric' })
   }
@@ -43,6 +49,9 @@ export default function Presupuestos() {
             <div className="presl-acciones">
               <button onClick={() => navigate(`/presupuestos/${p._id}/editar`)} className="presl-boton-editar">
                 Ver / Editar
+              </button>
+              <button onClick={() => convertirEnPedido(p._id)} className="presl-boton-pedido">
+                Convertir en pedido
               </button>
               <button onClick={() => eliminar(p._id)} className="presl-boton-eliminar">
                 Eliminar

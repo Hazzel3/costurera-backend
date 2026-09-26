@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@400;500;600&display=swap');
+
+/* ============================================
+
+   PEDIDOS
+
+   ============================================
+
+   ★ COMO MOVER ★
+
+     top:  arriba/abajo   (mas grande = mas abajo)
+
+     left: izquierda/derecha (mas grande = mas a la derecha)
+
+   ============================================ */
+
+/* -- COLORES DE CADA ESTADO --
+   Cambia estos colores y se aplican en la tarjeta y en el selector.
+   "fondo" es el color clarito del selector, "borde" la raya de la izquierda. */
+.pedidos-pagina {
+  --pendiente-borde:  #f59e0b;   /* amarillo/naranja */
+  --pendiente-fondo:  #fef3c7;
+
+  --en_proceso-borde: #3b82f6;   /* azul */
+  --en_proceso-fondo: #dbeafe;
+
+  --terminado-borde:  #16a34a;   /* verde */
+  --terminado-fondo:  #dcfce7;
+
+  --entregado-borde:  #9ca3af;   /* gris */
+  --entregado-fondo:  #f3f4f6;
+}
+
+/* Contenedor principal tipo cristal (igual que Clientes) */
+.pedidos-pagina {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(180, 120, 130, 0.15);
+  box-sizing: border-box;
+}
+
+/* -- ENCABEZADO (titulo + boton nuevo) -- */
+.pedidos-encabezado {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: flex;
+  justify-content: space-between;   /* titulo a la izquierda, boton a la derecha */
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Titulo "Pedidos" */
+.pedidos-titulo {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  font-family: 'Playfair Display', serif;
+  font-size: 1.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #8c4a54;
+  margin: 0;
+}
+
+/* Boton "+ Nuevo pedido" */
+.pedidos-boton-nuevo {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(179, 95, 114, 0.25);
+  transition: all 0.2s ease;
+}
+
+.pedidos-boton-nuevo:hover {
+  background: linear-gradient(135deg, #c9788a 0%, #9e4f61 100%);
+  transform: translateY(-1px);   /* se levanta un poquito */
+}
+
+/* -- BOTONES DE FILTRO (Todos / Pendiente / ...) -- */
+.pedidos-filtros {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  display: flex;
+  flex-wrap: wrap;    /* si no caben, bajan a otra fila */
+  gap: 0.5rem;        /* espacio entre botones */
+  margin-bottom: 1.5rem;
+}
+
+.pedidos-filtro {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: rgba(229, 164, 177, 0.25);
+  color: #8c4a54;
+  border: 1px solid rgba(201, 120, 138, 0.4);
+  padding: 5px 14px;
+  border-radius: 20px;   /* 20px = forma de pastilla */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pedidos-filtro:hover {
+  background: rgba(229, 164, 177, 0.45);
+}
+
+/* El filtro que esta elegido */
+.pedidos-filtro-activo {
+  background: #b35f72;
+  color: #ffffff;
+  border-color: #b35f72;
+}
+
+/* -- FORMULARIO NUEVO / EDITAR -- */
+.pedidos-form {
+  position: relative;
+  top: 0px;      /* arriba/abajo */
+  left: 0px;     /* izquierda/derecha */
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;   /* un campo debajo del otro */
+  gap: 0.85rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.pedidos-form-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3d2c33;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+}
+
+/* Texto encima de "Total" y "Fecha de entrega" */
+.pedidos-etiqueta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #7a5c65;
+}
+
+/* Todos los campos del formulario */
+.pedidos-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  color: #3d2c33;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.pedidos-input:focus {
+  border-color: #c9788a;
+  box-shadow: 0 0 0 3px rgba(201, 120, 138, 0.18);
+}
+
+.pedidos-form-botones {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;   /* botones a la derecha */
+}
+
+.pedidos-boton-guardar {
+  background: linear-gradient(135deg, #d88a9a 0%, #b35f72 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.25rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pedidos-boton-cancelar {
+  background: none;
+  border: 1px solid #ebd8dc;
+  border-radius: 10px;
+  color: #7a5c65;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+}
+
+/* -- LISTA DE PEDIDOS (crece sola, no se mueve pieza por pieza) -- */
+.pedidos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pedidos-vacio {
+  text-align: center;
+  color: #8c7178;
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 2.5rem 0;
+}
+
+/* Tarjeta de cada pedido */
+.pedido-tarjeta {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-left: 5px solid var(--color-borde);   /* raya de color segun el estado (ver abajo) */
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+/* Color de la raya segun el estado */
+.pedido-pendiente  { border-left-color: var(--pendiente-borde); }
+.pedido-en_proceso { border-left-color: var(--en_proceso-borde); }
+.pedido-terminado  { border-left-color: var(--terminado-borde); }
+.pedido-entregado  { border-left-color: var(--entregado-borde); }
+
+/* Nombre del cliente */
+.pedido-cliente {
+  font-family: 'Playfair Display', serif;
+  color: #3d2c33;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+}
+
+/* Descripcion del pedido */
+.pedido-descripcion {
+  font-size: 0.9rem;
+  color: #3d2c33;
+  margin: 0 0 2px 0;
+}
+
+/* Fecha de entrega y total */
+.pedido-detalle {
+  font-size: 0.85rem;
+  color: #7a5c65;
+}
+
+/* Notas del pedido */
+.pedido-notas {
+  font-size: 0.8rem;
+  color: #8c7178;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* -- ACCIONES (selector de estado + botones) -- */
+.pedido-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 260px;
+}
+
+/* Selector de estado */
+.pedido-estado {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--color-borde);
+  cursor: pointer;
+}
+
+/* Color del selector segun el estado */
+.pedido-pendiente  .pedido-estado { background: var(--pendiente-fondo);  border-color: var(--pendiente-borde); }
+.pedido-en_proceso .pedido-estado { background: var(--en_proceso-fondo); border-color: var(--en_proceso-borde); }
+.pedido-terminado  .pedido-estado { background: var(--terminado-fondo);  border-color: var(--terminado-borde); }
+.pedido-entregado  .pedido-estado { background: var(--entregado-fondo);  border-color: var(--entregado-borde); }
+
+/* Boton "Editar" */
+.pedido-boton-editar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: rgba(229, 164, 177, 0.25);
+  color: #8c4a54;
+  border: 1px solid rgba(201, 120, 138, 0.4);
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pedido-boton-editar:hover {
+  background: #b35f72;
+  color: #ffffff;
+  border-color: #b35f72;
+}
+
+/* Boton "Eliminar" */
+.pedido-boton-eliminar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  background: rgba(229, 115, 115, 0.1);
+  color: #e57373;
+  border: 1px solid rgba(229, 115, 115, 0.3);
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pedido-boton-eliminar:hover {
+  background: #c62828;
+  color: #ffffff;
+  border-color: #c62828;
+}

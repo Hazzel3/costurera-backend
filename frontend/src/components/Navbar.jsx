@@ -18,6 +18,7 @@ export default function Navbar() {
         {esAdmin ? (
           <>
             <Link to="/" className="navbar-enlace">Clientes</Link>
+            <Link to="/pedidos" className="navbar-enlace">Pedidos</Link>
             <Link to="/archivados" className="navbar-enlace">Archivados</Link>
             <Link to="/ajustes" className="navbar-enlace">Ajustes</Link>
             <Link to="/presupuestos" className="navbar-enlace">Presupuestos</Link>

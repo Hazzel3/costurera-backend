@@ -11,6 +11,7 @@ import Materiales from './pages/Materiales'
 import Prendas from './pages/Prendas'
 import Presupuesto from './pages/Presupuesto'
 import Presupuestos from './pages/Presupuestos'
+import Pedidos from './pages/Pedidos'
 import TiposMedida from './pages/TiposMedida'
 import Usuarios from './pages/Usuarios'
 import InicioCliente from './pages/InicioCliente'
@@ -95,6 +96,11 @@ export default function App() {
           <Route path="/presupuestos/:presupuestoId/editar" element={
             <RutaProtegida rol="admin">
               <Layout><Presupuesto /></Layout>
+            </RutaProtegida>
+          } />
+          <Route path="/pedidos" element={
+            <RutaProtegida rol="admin">
+              <Layout><Pedidos /></Layout>
             </RutaProtegida>
           } />
 

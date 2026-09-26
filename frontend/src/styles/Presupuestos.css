@@ -144,3 +144,23 @@
   color: #c62828;
   background-color: rgba(229, 115, 115, 0.1);
 }
+
+/* -- BOTON "Convertir en pedido" (agregado en la etapa 2) --
+   Mismo estilo que "Ver / Editar" pero en verde para que se distinga */
+.presl-boton-pedido {
+  background: none;
+  border: none;
+  color: #15803d;               /* verde */
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.presl-boton-pedido:hover {
+  color: #166534;               /* verde mas oscuro */
+  background-color: rgba(22, 163, 74, 0.1);
+}
