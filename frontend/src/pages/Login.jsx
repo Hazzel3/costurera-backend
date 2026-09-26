@@ -33,7 +33,7 @@ export default function Login() {
       return
     }
     const correo = form.email ? ` Mi correo es ${form.email}.` : ''
-    abrirWhatsApp(TELEFONO_COSTURERA, '', `Hola, olvidé mi contraseña de la app.${correo} ¿Me ayudas a restablecerla?`)
+    abrirWhatsApp(TELEFONO_COSTURERA, '', `Hola, olvidé mi contraseña de la app.${correo}🧵 ¿Me ayudas a restablecerla?🙏`)
   }
 
   return (
@@ -62,7 +62,7 @@ export default function Login() {
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
               className="login-input"
-              placeholder="Ingrese su correo  admin@costurera.com"
+              placeholder="Ingrese su correo"
               required
             />
           </div>
@@ -75,7 +75,7 @@ export default function Login() {
               value={form.password}
               onChange={e => setForm({ ...form, password: e.target.value })}
               className="login-input"
-              placeholder="Ingrese su contraseña admin123"
+              placeholder="Ingrese su contraseña "
               required
             />
           </div>

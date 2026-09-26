@@ -7,6 +7,7 @@ export default function Ajustes() {
   return (
     <div className="ajustes-pagina">
       <h1 className="ajustes-titulo">Ajustes</h1>
+      <h2 className="ajustes-subtitulo">✨ Configura a tu estilo ✨</h2>
 
       <div className="ajustes-botones">
         <button onClick={() => navigate('/ajustes/prendas')} className="ajustes-boton">

@@ -1,17 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 /* ============================================
-   NAVBAR (barra de arriba)
-   ============================================
-
-   ★ COMO MOVER ★
-   Cada bloque tiene:
-     top:  arriba/abajo   (mas grande = mas abajo)
-     left: izquierda/derecha (mas grande = mas a la derecha)
+   NAVBAR (Barra superior)
    ============================================ */
 
 .navbar {
-  background-color: rgba(238, 182, 182, 0.88); /* Color rosa original */
+  background-color: rgba(238, 182, 182, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -31,24 +25,89 @@
 
 /* -- ENLACES DEL LADO IZQUIERDO -- */
 .navbar-enlaces {
-  position: relative;
-  top: 0px;                       /* arriba/abajo */
-  left: 0px;                      /* izquierda/derecha */
+  display: flex;
+  align-items: center;
+}
 
+.menu-horizontal-contenedor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botón Clientes */
+.btn-menu {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-menu:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.flecha {
+  font-size: 0.8rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* ============================================
+   DESPLIEGUE HORIZONTAL A LA DERECHA
+   ============================================ */
+
+.menu-horizontal-items {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  
+  /* Inicialmente OCULTO y comprimido */
+  max-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  white-space: nowrap;
+  transform: translateX(-15px);
+  transition: max-width 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
+/* APARICIÓN HORIZONTAL AL PASAR CURSOR O CLIC */
+.navbar:hover .menu-horizontal-items,
+.menu-horizontal-contenedor.activo .menu-horizontal-items {
+  max-width: 1000px; /* Ancho suficiente para revelar todas las opciones */
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.navbar:hover .flecha,
+.menu-horizontal-contenedor.activo .flecha {
+  transform: rotate(90deg); /* La flecha apunta hacia abajo */
+}
+
+/* Estilo individual de cada enlace */
 .navbar-enlace {
   color: #ffffff;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  padding: 0.45rem 1rem;
+  padding: 0.45rem 0.9rem;
   border-radius: 10px;
   transition: all 0.25s ease;
   letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
 .navbar-enlace:hover {
@@ -63,18 +122,16 @@
   color: #ffffff;
 }
 
-/* -- USUARIO Y BOTÓN SALIR (Lado derecho) -- */
-.navbar-usuario {
-  position: relative;
-  top: 0px;                       /* arriba/abajo */
-  left: 0px;                      /* izquierda/derecha */
+/* ============================================
+   LADO DERECHO (USUARIO)
+   ============================================ */
 
+.navbar-usuario {
   display: flex;
   align-items: center;
   gap: 0.8rem;
 }
 
-/* Cápsula Administrador */
 .navbar-nombre {
   background: #ffffff;
   color: #5c3d46;
@@ -89,7 +146,6 @@
   transition: all 0.2s ease;
 }
 
-/* Punto verde */
 .navbar-nombre::before {
   content: '';
   display: inline-block;
@@ -104,7 +160,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Botón Salir */
 .navbar-salir {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.35);

@@ -152,7 +152,12 @@ export default function Usuarios() {
               {u.cliente ? ` · ${u.cliente.nombre}` : ''}
             </span>
             <span className="usuarios-col-acciones">
-              <button onClick={() => eliminar(u._id)} className="usuario-boton-eliminar">Eliminar</button>
+              {/* Oculta el botón 'Eliminar' únicamente para el correo admin principal */}
+              {u.email !== 'admin@costurera.com' && (
+                <button onClick={() => eliminar(u._id)} className="usuario-boton-eliminar">
+                  Eliminar
+                </button>
+              )}
             </span>
           </div>
         ))}
